@@ -25,11 +25,7 @@ public class LeapYear {
 	}
 
 
-<<<<<<< current
   /** Must be provided an integer as a command line argument ARGS.
-=======
-    /** Must be provided an integer as a command line argument ARGS.
->>>>>>> before discard
 	@param args input arguments
 	*/
     public static void main(String[] args) {
