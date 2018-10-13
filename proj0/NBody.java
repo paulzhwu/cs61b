@@ -51,5 +51,10 @@ class NBody {
             }
             StdDraw.show();
         }
+        StdOut.println(allPlants.length);
+        StdOut.println(radius);
+        for (Planet p: allPlants) {
+            StdOut.printf("%11.4e %11.4e %11.4e %11.4e %11.4e %s\n",p.xxPos,p.yyPos,p.xxVel,p.yyVel,p.mass,p.imgFileName);
+        }
     }
 }
