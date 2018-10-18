@@ -1,4 +1,5 @@
 import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
 
 import org.junit.Test;
 
@@ -64,6 +65,19 @@ public class IntListTest {
         IntList exp = IntList.of(1, 2, 3, 4, 5, 6);
         assertEquals(exp, IntList.catenate(A, B));
         assertEquals(IntList.of(1, 2, 3), A);
+    }
+
+
+    @Test(timeout = 1000)
+    public void testReverse() {
+        IntList A = IntList.of(1,2,3,4,5,6,7,8,9,0);
+        IntList orig = IntList.of(1,2,3,4,5,6,7,8,9,0);
+        IntList exp = IntList.of(0,9,8,7,6,5,4,3,2,1);
+        assertEquals(exp,IntList.reverse(A));
+        assertNotEquals(orig,A);
+        IntList B = IntList.of();
+        IntList exp_B = IntList.of();
+        assertEquals(exp_B,IntList.reverse(B));
     }
 
     /** If you're running this from the command line, you'll need
