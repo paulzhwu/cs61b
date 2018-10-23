@@ -26,6 +26,7 @@ public class ArrayDeque <T>{
         else {
             newCapacity += newCapacity/2;
         }
+        newCapacity = Math.max(newCapacity,10);
 
         int newStart = newCapacity/2 - size/2-1;
         T[] newArray = (T[]) new Object[newCapacity];
