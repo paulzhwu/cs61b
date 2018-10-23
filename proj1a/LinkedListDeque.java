@@ -132,6 +132,7 @@ public class LinkedListDeque <T>{
             System.out.print(itt.val+" ");
             itt = itt.next;
         }
+        System.out.println();
     }
 
     /** Get the index-th item in the Deque
