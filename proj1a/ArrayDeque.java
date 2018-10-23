@@ -6,8 +6,8 @@ public class ArrayDeque <T>{
     private T[] array;
     private int size;
     private int start;
-    private int end;
     private int capacity;
+
     /** Constructor of LinkedListDeque. Initialize local variables.
      *
      */
@@ -16,8 +16,6 @@ public class ArrayDeque <T>{
         array = (T[]) new Object[capacity];
         size = 0;
         start = capacity/2;
-        end = capacity/2;
-
     }
 
     private void resize(){
@@ -30,15 +28,10 @@ public class ArrayDeque <T>{
         }
 
         int newStart = newCapacity/2 - size/2-1;
-        int newEnd = newStart + size+1;
-        if (size == 0){
-            newEnd --;
-        }
         T[] newArray = (T[]) new Object[newCapacity];
         System.arraycopy(array,start+1,newArray,newStart+1,size);
         array = newArray;
         start = newStart;
-        end = newEnd;
         capacity = newCapacity;
     }
 
@@ -52,9 +45,6 @@ public class ArrayDeque <T>{
         }
         array[start] = item;
         start --;
-        if (size == 0) {
-            end ++;
-        }
         size ++;
     }
 
@@ -63,14 +53,12 @@ public class ArrayDeque <T>{
      * @param item new item
      */
     public void addLast(T item){
+        int end = start+size+1;
         if (end == capacity) {
             resize();
+            end = start + size + 1;
         }
         array[end] = item;
-        end ++;
-        if (size == 0) {
-            start --;
-        }
         size ++;
     }
 
@@ -99,6 +87,7 @@ public class ArrayDeque <T>{
             return null;
         }
         T result = array[start+1];
+        array[start+1] = null;
         start ++;
         size --;
         if (size < capacity/2 && capacity>10){
@@ -112,11 +101,12 @@ public class ArrayDeque <T>{
      * @return the last item.
      */
     public T removeLast(){
+        int end = start+size+1;
         if (size == 0) {
             return null;
         }
         T result = array[end-1];
-        end --;
+        array[end-1] = null;
         size --;
         if (size < capacity/2 && capacity>10){
             resize();
@@ -128,8 +118,8 @@ public class ArrayDeque <T>{
      *
      */
     public void printDeque(){
-        for(int i = start+1; i < end; i++) {
-            System.out.print(array[i]+" ");
+        for(int i = 0; i < size; i++) {
+            System.out.print(array[start+1+i]+" ");
         }
         System.out.println();
     }
